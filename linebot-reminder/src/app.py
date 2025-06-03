@@ -9,11 +9,13 @@ import re
 from apscheduler.schedulers.background import BackgroundScheduler
 from linebot import LineBotApi, WebhookParser
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, PushMessage
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
-LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET", "你的 channel secret")
-CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET")
+CHANNEL_ACCESS_TOKEN = os.getenv("CHANNEL_ACCESS_TOKEN")
 line_bot_api = LineBotApi(CHANNEL_ACCESS_TOKEN)
 parser = WebhookParser(LINE_CHANNEL_SECRET)
 
